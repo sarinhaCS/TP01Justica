@@ -3,39 +3,39 @@
 #include "lista.h"
 
 int main(){
-  
     int opcao; //variável resposta do menu
 
-    //&lista é a variável de exemplo da struct, pode ser mudado depois
+    Lista *l;
+    inicializarLista(&l);
 
     do {
-        printf("\n#### MENU ####\n");
-        printf("1 - Juntar arquivos\n");
+        printf("\n===== MENU =====\n");
+        printf("1 - Concatenar arquivos\n");
         printf("2 - Gerar resumo por tribunal\n");
-        printf("3 - Gerar arquivo por municipio\n");
-        printf("0 - Sair\n");
+        printf("3 - Filtrar arquivos por municipio\n");
+        printf("4 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
-          //os nomes das funções são de exmplo
             case 1:
                 /* Chama a função do item 1 */
-                //juntarArquivos(&lista);
+                //Lista * registro = 
+                concatenarArquivos(&l,"registro.csv");
                 break;
 
             case 2:
                 /* Chama a função do item 2 */
-                //gerarResumo(&lista);
+                gerarResumoMetas(&l, "resumo.csv");
                 break;
 
             case 3:
                 /* Chama a função do item 3 */
-                //gerarArquivoMunicipio(&lista);
+                filtrarPorMunicipio(&l, municipio);
                 break;
 
-            case 0:
-                printf("Saída solicitada\n");
+            case 4:
+                printf("Saida solicitada\n");
                 break;
 
             default:
@@ -44,5 +44,5 @@ int main(){
 
     } while (opcao != 0);
 
-  return 0;
+    return 0;
 }
