@@ -73,10 +73,10 @@ void liberarLista(Lista *l);
 
 
 // 1 -Função para concatenar arquivos e carregar na lista
-void concatenarArquivos(Lista * l, const char * nomeArquivoDestino);
+void concatenarArquivos(Lista *l, const char *nomeArquivoDestino);
 
 // 2 - Função para gerar o resumo com as fórmulas das Metas
-void gerarResumoMetas(Lista * l, const char * nomeArquivoSaida);
+void gerarResumoMetas(Lista *l, const char *nomeArquivoSaida);
 
 // 3 - Função para filtrar por município
 void filtrarPorMunicipio(Lista *l, const char *municipioEspecifico);
