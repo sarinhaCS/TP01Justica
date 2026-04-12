@@ -60,6 +60,7 @@ typedef struct no {
 
 typedef struct lista {
     No *inicio;
+    No *fim;   
     int tamanho;
 } Lista;
 
