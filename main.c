@@ -52,7 +52,7 @@ int main(){
                 printf("Opcao invalida!\n");
         }
 
-    } while (opcao != 0);
+    } while (opcao != 4);
 
     return 0;
 }
