@@ -229,12 +229,12 @@ void gerarResumoMetas(Lista *l, const char *nomeArquivoSaida) {
             }
             atual = atual->prox;
         }
- 
-        double meta1    = (casos_novos + dessobr + susp)        ? (double)julgados  / (casos_novos + dessobr + susp)        * 100      : 0;
-        double meta2a   = (distm2a  + suspm2a)                  ? (double)julgm2a   / (distm2a  + suspm2a)                  * 1000.0/7 : 0;
-        double meta2ant = (distm2ant + suspm2ant + desom2ant)   ? (double)julgm2ant / (distm2ant + suspm2ant + desom2ant)   * 100      : 0;
-        double meta4a   = (distm4a  + suspm4a)                  ? (double)julgm4a   / (distm4a  + suspm4a)                  * 100      : 0;
-        double meta4b   = (distm4b  + suspm4b)                  ? (double)julgm4b   / (distm4b  + suspm4b)                  * 100      : 0;
+
+double meta1    = (casos_novos + dessobr - susp) > 0 ? (double)julgados / (casos_novos + dessobr - susp) * 100 : 0;
+double meta2a   = (distm2a - suspm2a) > 0            ? (double)julgm2a / (distm2a - suspm2a) * 1000.0/7 : 0;
+double meta2ant = (distm2ant - suspm2ant - desom2ant) > 0 ? (double)julgm2ant / (distm2ant - suspm2ant - desom2ant) * 100 : 0;
+double meta4a   = (distm4a - suspm4a) > 0            ? (double)julgm4a / (distm4a - suspm4a) * 100 : 0;
+double meta4b   = (distm4b - suspm4b) > 0            ? (double)julgm4b / (distm4b - suspm4b) * 100 : 0;
  
         fprintf(f, "%s;%ld;%.2f;%.2f;%.2f;%.2f;%.2f\n",
                 tribunais[i], julgados, meta1, meta2a, meta2ant, meta4a, meta4b);
@@ -253,7 +253,7 @@ void filtrarPorMunicipio(Lista *l, const char *municipioEspecifico) {
     if (!l->inicio) { printf("Lista vazia. Concatene os arquivos primeiro.\n"); return; }
  
     char nomeArquivo[60];
-    snprintf(nomeArquivo, sizeof(nomeArquivo), "%s.txt", municipioEspecifico);
+    snprintf(nomeArquivo, sizeof(nomeArquivo), "%s.csv", municipioEspecifico);
  
     FILE *f = fopen(nomeArquivo, "w");
     if (!f) { printf("Erro ao criar arquivo.\n"); return; }
